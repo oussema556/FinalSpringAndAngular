@@ -22,11 +22,12 @@ import { UserPostsComponent } from './post/containers/user-posts/user-posts.comp
         GeneralInfoFormComponent,
         UserPostsComponent
     ],
-  exports: [
-    UserProfileComponent,
+    exports: [
+        UserProfileComponent,
+        UserPostsComponent,
 
 
-  ],
+    ],
   imports: [
     CommonModule,
     ReactiveFormsModule,

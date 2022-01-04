@@ -21,7 +21,6 @@ export class UserService {
 
   userProfile(id: any) {
     return this.http.get<User>(`${environment.apiUrl}/user/${id}`)
-
   }
 
 
@@ -41,6 +40,16 @@ export class UserService {
     )
   }
 
+
+  message: string="";
+  imageName: any;
+
+
+  getProfilePic(id: string | null){
+    //Make a call to the Spring Boot Application to save the image
+    return this.http.get(`${environment.apiUrl}/user/getProfilePic/${id}`,{ responseType: 'arraybuffer' })
+  }
+
   updateUserProfile(id: string, fullName: string, email: string, bio: string, phone: string, adress: string) {
     this.http.put<any>(`${environment.apiUrl}/updateUser`, {
       id: id,
@@ -56,13 +65,10 @@ export class UserService {
     })
   }
 
-  changeProfilePic(file: File) {
-    const formData: FormData = new FormData();
-
-    formData.append('file', file);
-
-    this.http.post(`${environment.apiUrl}/user/uploadProfilePic`,formData).subscribe(
+  changeProfilePic(file: FormData) {
+    this.http.post(`${environment.apiUrl}/user/uploadProfilePic`,{ observe: 'response' }).subscribe(
       res=>{
+        this._routet.navigate([`/profile/${localStorage.getItem('id')}`])
         console.log('done')
       },err =>{
         console.log(err.message)
@@ -81,7 +87,23 @@ export class UserService {
       ))
   }
 
-  changePassword(value: any) {
+  changePassword(password: string) {
+      return this.http.put(`${environment.apiUrl}/user/changePassword`,password)
+  }
 
+  getAllPosts() {
+    return this.http.get<any>(`${environment.apiUrl}/posts`)
+      .pipe(map(res => {
+          const posts =[]
+          for (const key in res) {
+            posts.push(res[key])
+          }
+          return posts
+        }
+      ))
+  }
+
+  getAllUsers() {
+    return this.http.get<any>(`${environment.apiUrl}/users`)
   }
 }

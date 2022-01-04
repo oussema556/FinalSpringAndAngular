@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {PostService} from "../../../../features/post/services/post.service";
 
 @Component({
   selector: 'app-like',
@@ -7,16 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LikeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private postService:PostService) { }
 
   ngOnInit(): void {
+    console.log(this.liked)
   }
 //Like
-  likeStatus = false
+  @Input() postId :string=""
+  @Input() liked? : boolean
 
+  likeStatus=false
   isLiked() {
-    this.likeStatus = !this.likeStatus
-    console.log(this.likeStatus)
+    //this.liked = !this.liked
+    console.log(this.liked)
   }
+
+
+  like(){
+    this.isLiked()
+    this.postService.like(this.postId).subscribe(res=>{
+      console.log("done")
+    },err=>{
+      console.log(err)
+    })
+  }
+
 
 }

@@ -11,6 +11,7 @@ export class UserPostsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  console.log(this.userPosts+"££££")
   }
 
 }

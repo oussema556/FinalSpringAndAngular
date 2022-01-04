@@ -3,6 +3,7 @@ import {AuthService} from "../../../core/Auth/auth.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {PasswordValidator} from "../../../shared/Velidators/password.validator";
 import {NgPasswordValidatorModule,NgPasswordValidatorOptions} from "ng-password-validator";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -35,9 +36,11 @@ export class RegisterComponent implements OnInit {
     return this.form.get('password')
   }
 
-  constructor(private authService:AuthService) { }
+  constructor(private authService:AuthService, private _router:Router) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem('token'))
+      this._router.navigate(['/home']);
   }
 
 

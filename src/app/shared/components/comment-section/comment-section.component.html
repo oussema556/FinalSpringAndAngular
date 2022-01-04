@@ -1,0 +1,17 @@
+
+
+    <div class=" m-4 p-2 rounded-lg border-2 border-gray-100 ">
+      <div class="">
+        <h1 class="font-bold text-gray-800 flex justify-between items-center">
+          <span>{{userFullName}}</span>
+          <span class="text-red-700 text-xs " *ngIf="!isTheCommentOwner">
+            <button class="hover:underline" (click)="deleteComment()">Delete</button>
+          </span>
+        </h1>
+        <p class="text-sm text-gray-500 bg-gray-100 p-3 rounded-lg">{{commentContent}}</p>
+      </div>
+
+    </div>
+
+
+

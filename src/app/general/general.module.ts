@@ -10,6 +10,8 @@ import {AppRoutingModule} from "../app-routing.module";
 import {ReactiveFormsModule} from "@angular/forms";
 import { ConfirmEmailComponent } from './containers/confirm-email/confirm-email.component';
 import {NgPasswordValidatorModule, NgPasswordValidatorOptions} from "ng-password-validator";
+import {FeaturesModule} from "../features/features.module";
+import { FollowersListComponent } from './components/followers-list/followers-list.component';
 
 
 
@@ -20,13 +22,15 @@ import {NgPasswordValidatorModule, NgPasswordValidatorOptions} from "ng-password
     HomeComponent,
     PostListComponent,
     ConfirmEmailComponent,
+    FollowersListComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-  ],
+    imports: [
+        CommonModule,
+        SharedModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        FeaturesModule,
+    ],
   exports:[
   ]
 })

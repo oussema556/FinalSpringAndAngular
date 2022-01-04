@@ -15,61 +15,22 @@
       <h1 class="text-2xl mb-4 font-bold">
         Followers
       </h1>
-      <div class="">
-        <a
-          class="cursor-pointer flex items-center space-x-4 text-sm rounded-md focus:outline-none hover:underline p-2 transition"  aria-expanded="false" aria-haspopup="true">
-
-          <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-          <p class="font-bold">Username</p>
-        </a>
-        <a
-          class="cursor-pointer flex items-center space-x-4 text-sm rounded-md focus:outline-none hover:underline p-2 transition"  aria-expanded="false" aria-haspopup="true">
-
-          <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-          <p class="font-bold">Username</p>
-        </a>
-        <a
-          class="cursor-pointer flex items-center space-x-4 text-sm rounded-md focus:outline-none hover:underline p-2 transition"  aria-expanded="false" aria-haspopup="true">
-
-          <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-          <p class="font-bold">Username</p>
-        </a>
-        <a
-          class="cursor-pointer flex items-center space-x-4 text-sm rounded-md focus:outline-none hover:underline p-2 transition"  aria-expanded="false" aria-haspopup="true">
-
-          <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-          <p class="font-bold">Username</p>
-        </a> <a
-        class="cursor-pointer flex items-center space-x-4 text-sm rounded-md focus:outline-none hover:underline p-2 transition"  aria-expanded="false" aria-haspopup="true">
-
-        <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-        <p class="font-bold">Username</p>
-      </a>
-        <a
-          class="cursor-pointer flex items-center space-x-4 text-sm rounded-md focus:outline-none hover:underline p-2 transition"  aria-expanded="false" aria-haspopup="true">
-
-          <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-          <p class="font-bold">Username</p>
-        </a>
-          <div class="mt-4">
-            <a
-              class="cursor-pointer rounded-md focus:outline-none hover:bg-blue-100 hover:text-blue-700 px-6 py-2 transition font-bold " >
-
-              Show All
-            </a>
-          </div>
+      <app-followers-list></app-followers-list>
       </div>
     </div>
 
 
-  </div>
+
 
 
 
   <!-- POST LIST -->
   <div class="w-2/4 min-h-screen">
     <app-create-post></app-create-post>
-    <app-post-list></app-post-list>
+    <div *ngIf="isLoading" class="flex w-full justify-center">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+    <app-user-posts [userPosts]="allPosts"></app-user-posts>
 
   </div>
 
@@ -95,4 +56,5 @@
     </div>
 
   </div>
+
 </div>

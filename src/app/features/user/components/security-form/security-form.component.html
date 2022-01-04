@@ -1,5 +1,8 @@
-<form class="max-w-xl mx-auto space-y-6 p-8">
+<form class="max-w-xl mx-auto space-y-6 p-8" [formGroup]="form">
   <h1 class="font-bold text-3xl mb-8">Change Password</h1>
+  <div class="" *ngIf="wrongPass">
+    <p class="w-full p-4 rounded-lg bg-red-200 text-red-600 text-sm font-semibold border-2 border-red-300">Password Does Not Match!</p>
+  </div>
   <div class="space-y-1">
     <label for="newPassword" class="block text-sm font-medium text-neutral-600">
       New Password

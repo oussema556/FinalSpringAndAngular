@@ -22,6 +22,9 @@
               <app-loading-spinner></app-loading-spinner>
             </div>
             <form [formGroup]="form" class="space-y-6" *ngIf="!isLoading">
+              <div class="" *ngIf="wrongData">
+                <p class="w-full p-4 rounded-lg bg-red-200 text-red-600 text-sm font-semibold border-2 border-red-300">Email or Password are wrong!</p>
+              </div>
               <div>
                 <label for="email" class="block text-sm font-medium text-neutral-600"> Email address </label>
                 <div class="mt-1">

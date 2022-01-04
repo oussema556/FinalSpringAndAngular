@@ -1,8 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../../../../environments/environment";
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 
 
@@ -13,10 +10,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class ChangeProfilePicComponent implements OnInit {
 
-  @Output() jumbotronIsClosed: EventEmitter<boolean> = new EventEmitter()
-  f= new FormGroup({
-    picture: new FormControl('',Validators.required)
-  })
+
 
 
 
@@ -27,16 +21,19 @@ export class ChangeProfilePicComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  selectedFiles!: FileList
-  selectFile(event: any) {
-    this.selectedFiles = event.target.files;
+  selectedFile!: File
+  selectFile(event:any) {
+    //Select File
+    this.selectedFile = event.target.files[0];
   }
-
+  uploadImageData = new FormData();
+test(){
+  console.log(this.selectedFile)
+}
   changeProfilePic(){
-    console.log(this.f.get('picture'))
-    const currentFile= this.selectedFiles.item(0) as File
-    console.log(currentFile)
-    this.userService.changeProfilePic(currentFile)
+    this.uploadImageData.append('file', this.selectedFile);
+    console.log(this.uploadImageData)
+    this.userService.changeProfilePic(this.uploadImageData)
   }
 
 

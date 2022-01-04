@@ -7,6 +7,7 @@ import {UserProfileComponent} from "./features/user/containers/user-profile/user
 import {ConfirmEmailComponent} from "./general/containers/confirm-email/confirm-email.component";
 import {AuthGuard} from "./core/guards/auth/auth.guard";
 import {UserSettingsComponent} from "./features/user/containers/user-settings/user-settings.component";
+import {ChangeProfilePicComponent} from "./features/user/components/change-profile-pic/change-profile-pic.component";
 
 
 let ProfileComponent;
@@ -28,6 +29,10 @@ const routes: Routes = [
     path:"home",
     component: HomeComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'changeProfilePic',
+    component:ChangeProfilePicComponent
   },
   {
     path:"settings",

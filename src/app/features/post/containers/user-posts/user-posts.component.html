@@ -1,3 +1,6 @@
-<p>user-posts works!</p>
+<div class="flex flex-col items-center" >
+  <div class="">
+    <app-post *ngFor="let post of userPosts" [post]="post"></app-post>
+  </div>
 
-<app-post *ngFor="let post of userPosts" [post]="post"></app-post>
+</div>

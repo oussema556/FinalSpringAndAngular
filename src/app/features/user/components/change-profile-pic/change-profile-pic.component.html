@@ -1,5 +1,5 @@
 <div class="min-h-screen w-full flex items-center justify-center absolute bg-black/40 z-50">
-  <form class="space-y-6 bg-gray-50 rounded-lg p-4 w-4xl" [formGroup]="f">
+  <form class="space-y-6 bg-gray-50 rounded-lg p-4 w-4xl">
     <div class="space-y-4 relative">
       <div class="flex justify-end min-w-[48rem]">
         <svg
@@ -10,7 +10,6 @@
       </div>
       <div class="">
         <input type="file" class="hidden" id="uploadIamge"
-               formControlName="picture"
                (change)="selectFile($event)">
         <label for="uploadIamge" class="flex min-h-[10rem] text-gray-400 hover:bg-blue-100 rounded-lg hover:text-blue-500 transition p-2 text-center bg-gray-100 flex justify-center items-center cursor-pointer">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -21,7 +20,7 @@
           </span>
         </label>
       </div>
-      <button type="submit"
+      <input type="button" value="Upload Image"
               (click)="changeProfilePic()"
               class="
                         flex
@@ -45,7 +44,11 @@
                         focus:ring-offset-2
                         focus:ring-blue-500
                         disabled:bg-blue-400
-                      "> Upload Image </button>
+                      ">
+      <button (click)="test()">Test</button>
+
     </div>
   </form>
 </div>
+
+

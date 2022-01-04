@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  wrongData=false
   isLoading= false
 
   form= new FormGroup({
@@ -33,6 +33,8 @@ export class LoginComponent implements OnInit {
   constructor(private authService:AuthService,private _router: Router) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem('token'))
+      this._router.navigate(['/home']);
   }
 
   login() {
@@ -55,7 +57,10 @@ export class LoginComponent implements OnInit {
         this._router.navigate(["./home"])
         this.isLoading=false
 
-    })
+    },err=>{
+        this.isLoading=false
+        this.wrongData=true
+      })
   }
 
 }

@@ -35,4 +35,23 @@ export class PostService {
     formData.append('post',new Blob([JSON.stringify(post)],{type: "application/json"}))
     return this.http.post(`${environment.apiUrl}/post`,formData)
   }
+
+  deletePost(postId: string) {
+    return this.http.delete(`${environment.apiUrl}/post/${postId}`)
+  }
+
+  like(postId: string) {
+    return this.http.post(`${environment.apiUrl}/post/like/${postId}`,"hh")
+  }
+
+  addComment(postId: string, content: any) {
+    return this.http.post(`${environment.apiUrl}/post/${postId}`,
+      {
+      content: content,
+            })
+  }
+
+  deleteComment(commentId: string) {
+      return this.http.delete(`${environment.apiUrl}/post/comment/${commentId}`)
+  }
 }

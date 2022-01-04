@@ -1,0 +1,10 @@
+<form class="comment-input" [formGroup]="commentForm">
+  <label for="">
+    <img
+      src="https://media.istockphoto.com/photos/millennial-male-team-leader-organize-virtual-workshop-with-employees-picture-id1300972574?b=1&k=20&m=1300972574&s=170667a&w=0&h=2nBGC7tr0kWIU8zRQ3dMg-C5JLo9H2sNUuDjQ5mlYfo="
+      alt="" class="small-profile-picture">
+  </label>
+  <input type="text" name="" id="" placeholder="type you comment here..." formControlName="content">
+  <button class="btn btn-blue" (click)="addComment()" [disabled]="this.commentForm.invalid">Comment</button>
+</form>
+

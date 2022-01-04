@@ -13,7 +13,12 @@ export class UserProfileComponent implements OnInit {
   id = localStorage.getItem('id')
   //img = "https://media.istockphoto.com/photos/millennial-male-team-leader-organize-virtual-workshop-with-employees-picture-id1300972574?b=1&k=20&m=1300972574&s=170667a&w=0&h=2nBGC7tr0kWIU8zRQ3dMg-C5JLo9H2sNUuDjQ5mlYfo="
   userId:string | null=""
-  posts: any[] = [];
+  userPosts: any[] = []
+  allPosts:any[]=[]
+  retrievedImage: any;
+  base64Data: any;
+  retrieveResonse: any;
+  data!: BlobPart
 
   constructor(
     private userService: UserService,
@@ -55,18 +60,25 @@ export class UserProfileComponent implements OnInit {
           this.user.fullName = res.fullName
           this.user.email = res.email
           this.user.bio = res.bio
-          this.user.profilePic = res.profilePic
+         /* this.userService.getProfilePic(res.userId).subscribe(
+            res => {
+              const reader = new FileReader();
+              reader.readAsDataURL(new Blob([res]));
+              this.retrievedImage=reader
+            }
+          )*/
+          this.user.profilePic = null
           this.user.coverPic = res.coverPic
           this.user.address = res.address
           this.user.created_at = res.created_at
           this.user.phone = res.phone
           this.user.posts = res.posts
           this.user.favoriteCategories = res.favoriteCategories
-          console.log(res)
           if (typeof this.user.profilePic === "string") {
             localStorage.setItem('profilePic', this.user.profilePic)
           }
           this.isLoading=false
+
         })
     })
 
@@ -79,13 +91,14 @@ export class UserProfileComponent implements OnInit {
      //this.userService.updateGeneralInfo(this.user)
   }
 
+
   getUserPosts(){
     this.route.paramMap.subscribe(params=>{
       return this.userService.getUserPosts(this.userId).subscribe(res=>{
         res.forEach(post =>{
-          this.posts.push(post)
+          this.userPosts.push(post)
         })
-        console.log(this.posts)
+        console.log(this.userPosts)
 
       },err=>{
 
