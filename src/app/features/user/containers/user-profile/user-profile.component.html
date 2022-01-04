@@ -1,0 +1,156 @@
+
+
+<div *ngIf="isLoading" class="max-w-6xl min-h-screen flex items-center justify-center mx-auto bg-gray-100">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+
+<div *ngIf="!isLoading" class="max-w-6xl mx-auto bg-gray-100">
+  <!--Hero Section-->
+  <div class="main-infos">
+    <div class="images">
+      <div class="cover-picture relative">
+        <div *ngIf="user.coverPic==null" class="cover-picture bg-gray-400"></div>
+        <img
+          *ngIf="user.coverPic!=null"
+          [src]="this.user.coverPic"
+          class="">
+  <div class="profileBtns absolute right-0 flex space-x-4 mr-8" *ngIf="user.userId!=currentUser">
+    <button class="flex space-x-2 items-center  px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg transition hover:bg-blue-600 mt-2" (click)="updateProfileInfo()">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+      </svg>
+      <span>
+        Follow
+      </span>
+    </button>
+    <button class="flex space-x-2 items-center px-6 py-2 bg-blue-100/50 text-blue-500 border-blue-500 font-semibold rounded-lg transition hover:bg-blue-100 mt-2" (click)="updateProfileInfo()">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+      </svg>
+      <span>
+        Send a Message
+      </span>
+    </button>
+
+  </div>
+      </div>
+
+
+      <div class="profile-picture">
+        <img *ngIf="user.profilePic!=null"
+             [src]="user.profilePic"
+             alt="" class="">
+        <img *ngIf="user.profilePic==null"
+             src="./assets/defaultProfilePic.png"
+             alt="" class="">
+        <div class="absolute bottom-0  w-full bg-gray-900/50 p-2">
+         <button class="text-gray-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+
+      <div class="text-infos -translate-y-24">
+        <h1 class="full-name">{{user.fullName}}</h1>
+        <p class="bio">
+        <span *ngIf="user.bio==null">
+          no bio
+        </span>
+          <span *ngIf="user.bio!=null">
+        {{user.bio}}
+
+        </span>
+        </p>
+      </div>
+    </div>
+    <!--End Hero Section-->
+
+    <div class="flex">
+      <div class="w-2/5 ">
+
+        <!--General Informations-->
+        <div class="general-infos">
+          <h1 class="font-bold text-2xl mb-8">General Informations</h1>
+          <div class="detail">
+            <p class="detail-name">Member Since</p>
+            <p class="detail-data">
+              <!--{{user.created_at}}-->
+              {{user.created_at?.substr(0,10)}}
+            </p>
+          </div>
+          <div class="detail">
+            <p class="detail-name">Phone Number</p>
+            <p class="detail-data">
+        <span *ngIf="user.phone">
+            {{user.phone}}
+        </span>
+              <span *ngIf="!user.phone">
+            no phone number
+          </span>
+            </p>
+          </div>
+          <div class="detail">
+            <p class="detail-name">Address</p>
+            <p class="detail-data">
+        <span *ngIf="user.address">
+            {{user.address}}
+        </span>
+              <span *ngIf="!user.address">
+            no Address Available
+          </span>
+            </p>
+          </div>
+
+
+          <div class="detail">
+            <p class="detail-name">Total Likes</p>
+            <p class="detail-data">
+          <span class="font-bold" >
+            1463
+          </span>
+            </p>
+          </div>
+
+          <div class="detail">
+            <p class="detail-name">Total Comments</p>
+            <p class="detail-data">
+          <span class="font-bold" >
+            543
+          </span>
+            </p>
+          </div>
+          <div class="detail">
+            <p class="detail-name ">Favorite Categories</p>
+            <div class="detail-data">
+       <span *ngIf="user.favoriteCategories" class="categories">
+          <p *ngFor="let category of user.favoriteCategories" class="category-tag">{{category}}</p>
+       </span>
+              <span>no Favorite Categories</span>
+              <span *ngIf="user.favoriteCategories?.length==0">
+        </span>
+            </div>
+          </div>
+
+        </div>
+        <!--End General Informations-->
+      </div>
+      <div class="w-3/4">
+        <app-create-post></app-create-post>
+        <div
+          *ngIf="user.posts?.length==0"
+          class=" max-w-[42rem] mx-auto bg-gray-200 m-4 rounded-lg p-12 flex justify-center  text-gray-500 space-x-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+          </svg>
+          <h1 class="font-bold">You have No Posts</h1>
+        </div>
+        <div class="" >
+          <app-user-posts [userPosts]="posts"></app-user-posts>
+        </div>
+      </div>
+    </div>
+  </div>

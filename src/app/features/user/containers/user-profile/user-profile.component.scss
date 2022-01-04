@@ -1,0 +1,161 @@
+.general-infos{
+  @apply space-y-4 bg-white m-4 p-12 rounded-md
+}
+
+.detail{
+  @apply flex items-center justify-between space-x-4;
+  svg{
+    @apply hover:text-blue-700 transition
+  }
+}
+.detail-data{
+  @apply text-gray-500 text-sm
+}
+.detail-name{
+  @apply font-bold text-gray-800 text-sm  flex-1
+}
+
+.categories{
+  @apply flex flex-wrap items-center justify-start
+}
+
+.category-tag{
+  @apply rounded-full border-2 border-blue-300 bg-blue-100 px-4 py-1 hover:underline hover:bg-blue-200/80 transition m-2
+}
+
+.images{
+  @apply flex items-center flex-col
+}
+
+.cover-picture{
+  @apply h-64 w-full object-cover
+}
+
+.profile-picture{
+  @apply rounded-full w-48 h-48 object-cover text-center -translate-y-32 border-4 border-gray-50 overflow-hidden relative
+}
+
+
+.text-infos{
+  @apply flex items-center flex-col space-y-4
+}
+
+.full-name{
+  @apply text-3xl font-bold text-gray-800
+}
+
+.bio{
+  @apply max-w-md text-center text-gray-600
+}
+
+
+
+
+
+
+
+
+.posts{
+  @apply flex flex-col items-center w-full bg-gray-100
+}
+.post{
+  @apply w-[42rem] my-4 mx-12 bg-white rounded-md overflow-hidden
+}
+
+.post-content{
+  @apply px-4 py-8 space-y-4 text-gray-500
+}
+
+.post-image{
+  @apply w-full object-cover h-72
+}
+
+
+.post-title{
+  @apply font-bold text-gray-800 text-3xl
+}
+
+
+
+.reacts{
+  @apply flex items-center w-full border-t-2 border-b-2 border-gray-300
+}
+
+.react{
+  @apply flex items-center flex-1 text-gray-600 justify-center p-2 space-x-4 hover:bg-blue-100/50 transition cursor-pointer transition
+}
+
+
+
+.total-reacts{
+  @apply flex items-center justify-between px-4 py-2
+}
+.total-likes{
+  @apply flex items-center space-x-2;
+  svg{
+    @apply  fill-current text-red-500
+  }
+  a{
+    @apply text-xs hover:underline
+  }
+}
+
+.total-comments{
+  @apply flex items-center space-x-2;
+  svg{
+    @apply  fill-current text-blue-500
+  }
+  a{
+    @apply text-xs hover:underline
+  }
+}
+
+
+.post-user-info{
+  @apply p-4 flex items-center justify-between
+}
+.profile{
+  @apply flex items-center space-x-4;
+  img{
+    @apply rounded-full w-8 h-8 object-cover
+  }
+  .post-user-name{
+    @apply font-bold text-gray-800
+  }
+  .post-date{
+    @apply text-xs text-gray-600
+  }
+}
+
+.dropDown-link{
+  @apply text-sm py-2 px-4 block w-full whitespace-nowrap bg-transparent  text-gray-700 hover:bg-blue-100 hover:text-blue-700 font-semibold transition flex items-center space-x-2
+}
+
+.danger{
+  @apply text-red-700 hover:bg-red-100
+}
+
+.user-options{
+  @apply hover:text-blue-700 transition
+}
+
+
+.comment-input{
+  @apply flex items-center px-4 space-x-2 p-4;
+  input{
+    @apply w-3/4 rounded-lg transition
+  }
+}
+
+.small-profile-picture{
+  @apply rounded-full w-8 h-8 object-cover
+}
+
+
+.btn{
+  @apply py-2 px-4 font-semibold rounded-lg
+}
+
+.btn-blue{
+  @apply bg-blue-600 text-white hover:bg-blue-700 transition
+}

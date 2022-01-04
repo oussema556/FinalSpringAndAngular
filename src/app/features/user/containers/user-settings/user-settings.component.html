@@ -1,0 +1,17 @@
+<div class="flex items-center justify-center max-w-6xl mx-auto h-screen">
+  <div class="flex items-center justify-center  w-full min-h-full">
+    <div class="w-2/5 h-screen flex items-center bg-white">
+      <div class="flex flex-col p-8 space-y-4 w-full">
+        <h1 class="font-bold text-2xl mb-4">Settings</h1>
+        <button (click)="isFormGeneral()" [ngClass]="{'bg-blue-100 border-blue-100 hover:bg-blue-100': formIsGeneral}"  class="hover:bg-gray-100 transition font-semibold text-gray-800 p-4 w-full bg-white mx-2 rounded-lg border-2 border-gray-200">General Settings</button>
+        <button (click)="isFormSecurity()"[ngClass]="{'bg-blue-100 border-blue-100 hover:bg-blue-100': formIsSecurity}" class="hover:bg-gray-100 transition font-semibold text-gray-800 p-4 w-full bg-white mx-2 rounded-lg border-2 border-gray-200">Security Settings</button>
+      </div>
+
+    </div>
+    <div class="w-3/5 border-x-2 border-gray-200 bg-white min-h-screen flex items-center justify-center">
+      <app-general-info-form class="w-full"  *ngIf="formIsGeneral"></app-general-info-form>
+      <app-security-form class="w-full" *ngIf="formIsSecurity"></app-security-form>
+    </div>
+  </div>
+
+</div>
